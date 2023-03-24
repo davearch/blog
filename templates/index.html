@@ -1,0 +1,14 @@
+{% extends "layouts/default.html" %}
+{% block title %}darchuletajr.com{% endblock %}
+{% block content %}
+    <div>
+        <img style="max-width: 400px; float: left;" src="/images/rabbit.png" alt="lost">
+    </div>
+    <h1>Welcome to my blog!</h1>
+    <p>Here's some recent posts:</p>
+    <ul>
+        {% for post in posts %}
+            <li><a href="/blog/{{ post.id }}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

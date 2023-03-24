@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+/* Global styles */
+body {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #0D0208;
+  color: #00FF00;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header styles */
+header {
+  background-color: #000000;
+  color: #00FF00;
+  padding: 50px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 72px;
+  text-shadow: 2px 2px #FF00FF;
+}
+
+/* Navigation styles */
+nav {
+  background-color: #2B2B2B;
+  color: #00FF00;
+  padding: 10px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+nav a {
+  color: #00FF00;
+  text-decoration: none;
+  padding: 5px;
+}
+
+/* Main content styles */
+main {
+  margin: 50px;
+}
+
+/* Post styles */
+.post {
+  background-color: #000000;
+  border: 1px solid #00FF00;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.post h2 {
+  margin-top: 0;
+  font-size: 36px;
+  text-shadow: 2px 2px #FF00FF;
+}
+
+.post .date {
+  font-style: italic;
+}
+
+.post p {
+  line-height: 1.5;
+}
+
+/* Footer styles */
+footer {
+  background-color: #2B2B2B;
+  color: #00FF00;
+  padding: 10px;
+}
+
+/* Link styles */
+a {
+  color: #00FF00;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 20px;
+}
+
+.about-grid img {
+  grid-row: 1 / span 2;
+}
