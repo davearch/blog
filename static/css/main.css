@@ -93,10 +93,14 @@ a:hover {
 
 .about-grid {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr auto;
   grid-gap: 20px;
 }
 
 .about-grid img {
   grid-row: 1 / span 2;
+}
+
+.main-image {
+    float: left;
 }

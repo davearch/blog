@@ -22,9 +22,10 @@
 
 ;;
 ;; Routing rules
-
 (defroute "/" ()
-  (render #P"index.html"))
+  (let ((posts (get-all-blog-posts)))
+    (render #P"index.html"
+	    '(:posts (posts)))))
 
 (defroute "/about" ()
   (render #P"about.html"))
