@@ -1,106 +1,228 @@
+/*
+ * custom stylesheitz
+ * <darchuletajr@gmail.com> circa 2023
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣠⣶⡾⠏⠉⠙⠳⢦⡀⠀⠀⠀⢠⠞⠉⠙⠲⡀⠀
+⠀⠀⠀⣴⠿⠏⠀⠀⠀⠀⠀⠀⢳⡀⠀  ⡏⠀⠀⠀⠀⠀⢷
+⠀⠀⢠⣟⣋⡀⢀⣀⣀⡀⠀⣀⡀⣧⠀⢸⠀⠀⠀⠀⠀ ⡇
+⠀⠀⢸⣯⡭⠁⠸⣛⣟⠆⡴⣻⡲⣿⠀⣸⠀⠀YO⠀ ⡇
+⠀⠀⣟⣿⡭⠀⠀⠀⠀⠀⢱⠀⠀⣿⠀ ⢹⠀⠀⠀⠀⠀ ⡇
+⠀⠀⠙⢿⣯⠄⠀⠀⠀⢀⡀⠀⠀⡿⠀⠀⡇⠀⠀⠀⠀⡼
+⠀⠀⠀⠀⠹⣶⠆⠀⠀⠀⠀⠀⡴⠃⠀⠀⠘⠤⣄⣠⠞⠀
+⠀⠀⠀⠀⠀⢸⣷⡦⢤⡤⢤⣞⣁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢀⣤⣴⣿⣏⠁⠀⠀⠸⣏⢯⣷⣖⣦⡀⠀⠀⠀⠀⠀⠀
+⢀⣾⣽⣿⣿⣿⣿⠛⢲⣶⣾⢉⡷⣿⣿⠵⣿⠀⠀⠀⠀⠀⠀
+⣼⣿⠍⠉⣿⡭⠉⠙⢺⣇⣼⡏⠀⠀⠀⣄⢸⠀⠀⠀⠀⠀⠀
+⣿⣿⣧⣀⣿.........⣀⣰⣏⣘⣆⣀⠀⠀
+*/
+
+
 @charset "UTF-8";
 
 /* Global styles */
 body {
-  font-family: 'Courier New', Courier, monospace;
-  background-color: #0D0208;
-  color: #00FF00;
-  margin: 0;
-  padding: 0;
+      background-color: #b0c4de;
+      margin: 0;
+      padding: 0;
+      background-image: url('/images/Zk6TR5k.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .content {
+      flex-grow: 1;
+    }
+
+    /* .taskbar { */
+    /*   display: flex; */
+    /*   justify-content: space-between; */
+    /*   align-items: center; */
+    /*   background-color: #1c1c1c; */
+    /*   height: 40px; */
+    /*   padding: 0 10px; */
+    /*   position: fixed; */
+    /*   bottom: 0; */
+    /*   left: 0; */
+    /*   right: 0; */
+    /* } */
+
+    .start-button {
+      display: flex;
+      align-items: center;
+      color: #ffffff;
+      text-decoration: none;
+      height: 100%;
+    }
+
+    /* .start-menu { */
+    /*   display: none; */
+    /*   position: fixed; */
+    /*   left: 0; */
+    /*   bottom: 40px; */
+    /*   width: 300px; */
+    /*   background-color: #ffffff; */
+    /*   border: 1px solid #000; */
+    /*   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
+    /*   z-index: 1000; */
+    /* } */
+
+    .start-menu.active {
+      display: block;
+    }
+
+    .window {
+	position: absolute;
+	z-index: 1;
+	touch-action: none;
+	top: 50px;
+	left: 50px;
+    }
+
+    .window-header {
+	cursor: move;
+	user-select: none;
+    }
+
+    .resize-handle {
+	width: 10px;
+	height: 10px;
+	background-color: transparent;
+	position: absolute;
+	cursor: nwse-resize;
+	z-index: 10;
+	right: 0;
+	bottom: 0;
+    }
+
+    /* .taskbar-item { */
+    /* 	display: flex; */
+    /* 	align-items: center; */
+    /* 	background-color: #1c1c1c; */
+    /* 	color: #ffffff; */
+    /* 	padding: 0 8px; */
+    /* 	height: 100%; */
+    /* 	cursor: pointer; */
+    /* 	user-select: none; */
+    /* } */
+
+    /* .taskbar-item.active { */
+    /* 	background-color: #4a4a4a; */
+    /* } */
+
+
+
+
+    /********/
+ .taskbar {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(to top, rgba(26, 26, 26, 0.8), rgba(53, 53, 53, 0.8));
+  backdrop-filter: blur(1px);
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1), 0 -2px 3px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
 }
 
-/* Header styles */
-header {
-  background-color: #000000;
-  color: #00FF00;
-  padding: 50px;
-  text-align: center;
+.start-menu {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 8px;
+  background-color: #1c1c1c;
+  color: #ffffff;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: inset -1px 0 rgba(255, 255, 255, 0.1);
 }
 
-header h1 {
-  margin: 0;
-  font-size: 72px;
-  text-shadow: 2px 2px #FF00FF;
+.start-menu img {
+  height: 20px;
+  margin-right: 6px;
 }
 
-/* Navigation styles */
-nav {
-  background-color: #2B2B2B;
-  color: #00FF00;
-  padding: 10px;
+.taskbar-item {
+  display: flex;
+  align-items: center;
+  background-color: #1c1c1c;
+  color: #ffffff;
+  padding: 0 12px;
+  height: 100%;
+  margin: 0 2px;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: inset -1px 0 rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  font-weight: bold;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
 }
 
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.taskbar-item.active {
+  background-color: #4a4a4a;
+  box-shadow: inset -1px 0 rgba(255, 255, 255, 0.1), 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-nav li {
-  display: inline-block;
-  margin-right: 10px;
+.start-menu-dropdown {
+    position: fixed;
+    left: 0;
+    bottom: 40px; /* height of taskbar */
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #aaa;
+    border-bottom: none;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    display: none;
 }
 
-nav a {
-  color: #00FF00;
-  text-decoration: none;
-  padding: 5px;
+.navbar {
+    background-color: #2b5797;
+    padding: 6px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 12px;
 }
 
-/* Main content styles */
-main {
-  margin: 50px;
+.navbar a {
+    color: #ffffff;
+    text-decoration: none;
 }
 
-/* Post styles */
-.post {
-  background-color: #000000;
-  border: 1px solid #00FF00;
-  padding: 10px;
-  margin-bottom: 10px;
+.navbar a:hover {
+    text-decoration: underline;
 }
 
-.post h2 {
-  margin-top: 0;
-  font-size: 36px;
-  text-shadow: 2px 2px #FF00FF;
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.post .date {
-  font-style: italic;
+.nav-item {
+    padding: 4px 16px;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 12px;
 }
 
-.post p {
-  line-height: 1.5;
+.nav-item:last-child {
+    border-bottom: none;
 }
 
-/* Footer styles */
-footer {
-  background-color: #2B2B2B;
-  color: #00FF00;
-  padding: 10px;
+.nav-link {
+    color: #333;
+    text-decoration: none;
 }
 
-/* Link styles */
-a {
-  color: #00FF00;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-gap: 20px;
-}
-
-.about-grid img {
-  grid-row: 1 / span 2;
-}
-
-.main-image {
-    float: left;
+.nav-link:hover {
+    color: #2b5797;
+    text-decoration: underline;
 }

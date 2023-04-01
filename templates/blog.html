@@ -4,8 +4,17 @@
 {% block title %}My Blog - {{ post.title }}{% endblock %}
 
 {% block content %}
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.date }}</p>
-    <div>{{ post.content }}</div>
+<div class="window">
+  <div class="title-bar">
+    <div class="title-bar-text">{{ post.title }}</div>
+  </div>
+  <div class="window-body">
+    <h2>{{ post.title }}</h2>
+    <p class="date">{{ post.date|date:"%Y-%m-%d" }}</p>
+    <div class="post-content">
+      {{ post.content|safe }}
+    </div>
+  </div>
+</div>
 {% endblock %}
 

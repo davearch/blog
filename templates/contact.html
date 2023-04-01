@@ -2,11 +2,23 @@
 {% block title %}My Blog - Contact{% endblock %}
 
 {% block content %}
-    <h1>Contact Me</h1>
+<div class="window active" style="min-width: 300px"s>
+  <div class="title-bar window-header">
+    <div class="title-bar-text">Contact me</div>
+    <div class="title-bar-controls">
+      <button aria-label="Minimize"></button>
+      <button aria-label="Maximize"></button>
+      <button aria-label="Close"></button>
+    </div>
+  </div>
+  <div class="window-body has-space">
+    <h3>Contact Me</h3>
     <p>Feel free to get in touch:</p>
     <ul>
       <li><a href="mailto:darchuletajr@gmail.com">Email</a></li>
       <li><a href="https://twitter.com/DArchuletajr">twitter</a></li>
     </ul>
+  </div>
+</div>
 
 {% endblock %}

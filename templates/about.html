@@ -1,14 +1,24 @@
 {% extends "layouts/default.html" %}
 {% block title %}darchuletajr.com{% endblock %}
 {% block content %}
-    <h1>About Me</h1>
-    <div class="about-grid">
-        <img src="/images/cyberpunk.jpg" alt="lost">
-        <p>Here's some information about me:</p>
-        <ul>
-            <li>Name: John Doe</li>
-            <li>Occupation: Blogger</li>
-            <li>Email: john.doe@example.com</li>
-        </ul>
+
+<div class="window active" style="min-width: 300px">
+  <div class="title-bar window-header">
+    <div class="title-bar-text">About</div>
+    <div class="title-bar-controls">
+      <button aria-label="Minimize"></button>
+      <button aria-label="Maximize"></button>
+      <button aria-label="Close"></button>
     </div>
+  </div>
+  <div class="window-body has-space">
+    <h3>About me</h3>
+    <p>Here's some information about me:</p>
+    <ul>
+      <li>Name: David Archuleta Jr.</li>
+      <li>Occupation: Software Engineer</li>
+      <li>Email: darchuletajr@gmail.com</li>
+    </ul>
+  </div>
+</div>
 {% endblock %}

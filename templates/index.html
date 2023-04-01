@@ -2,14 +2,34 @@
 {% block title %}darchuletajr.com{% endblock %}
 {% block content %}
 
-        <img class="main-image" src="/images/rabbit.png" alt="lost">
-
-	<h1>Welcome to my blog!</h1>
-	<p>Here's some recent posts:</p>
-	<ul>
-          {% for post in posts %}
-          <li><a href="/blog/{{ post.id }}">{{ post.title }}</a></li>
-          {% endfor %}
-	</ul>
+<div class="window active" style="min-width: 300px">
+  <div class="title-bar window-header">
+    <div class="title-bar-text">Welcome to my blog!</div>
+    <div class="title-bar-controls">
+      <button aria-label="Minimize"></button>
+      <button aria-label="Maximize"></button>
+      <button aria-label="Close"></button>
+    </div>
+  </div>
+  <div class="window-body has-space">
+    <h3>Welcome!</h3>
+    <p>hi 👋 My name is David and this is my blog. I'm a software engineer and I love to code and read and ride my bike.</p>
+    <p>This blog is written in a combination of common lisp using the caveman2 web framework and vanilla JavaScript.</p>
+    <p>Now you might ask: "But David, why not use ReactJS/NextJS/SvelteKit/{insert the latest front end craze}???"</p>
+    <p>Well, that's just simply too basic for my taste. That's like asking me why I don't just go to Starbucks everyday instead of the local fair trade coffeeshop.</p>
+    <p>Don't get me wrong - I totally go to Starbucks every now and then. But it's not the style that I want to present to the world.</p>
+    <p>As far as lisp is concerned, I just luv it and think it's cool. That's pretty much it. Also I don't really know it too well so I thought this would be a great project for learning.</p>
+    <br />
+    <p>These are my latest blog posts</p>
+    <ul>
+      {% for posts in posts %}
+      <li>
+	<a href="/blog/{{ post.id }}">{{ post.title }}</a>
+	<span class="date"{{ post.date|date:"%Y-%m-%d" }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
 
 {% endblock %}

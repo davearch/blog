@@ -1,19 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>{% block title %}{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}My Blog{% endblock %}</title>
+  <link rel="stylesheet" href="https://unpkg.com/7.css">
   <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css">
 </head>
 <body>
-  <header>
-    {% include "header.html" %}
-  </header>
-  <main>
-    {% block content %}{% endblock %}
-  </main>
-  <footer>
-    {% include "footer.html" %}
-  </footer>
+  <div class="container">
+    <div class="content">
+      {% block content %}{% endblock %}
+    </div>
+    <div class="taskbar">
+      <div class="start-menu" onclick="toggleStartMenu()">
+	<img src="images/windows_start.png" alt="Start" />
+	Start
+      </div>
+      <nav>
+	<!-- todo: add other taskbar items like the date/time etc. -->
+      </nav>
+    </div>
+    <div class="start-menu-dropdown" style="display: none;">
+      <header class="navbar">
+	<a class="title" href="/">darchuletajr.com</a>
+      </header>
+      <nav>
+	<ul class="nav-list">
+	  <li class="nav-item"><a class="nav-link" href="/">Home</a><li>
+	  <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+	  <li class="nav-item"><a class="nav-link" href="/contact">Contact me</a></li>
+	</ul>
+      </nav>
+    </div>
+    <script src="/js/utils.js"></script>
 </body>
 </html>
