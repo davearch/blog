@@ -1,0 +1,41 @@
+{% extends "layouts/default.html" %}
+{% block title %}darchuletajr.com{% endblock %}
+{% block content %}
+
+<div class="window active" style="min-width: 300px">
+  <div class="title-bar window-header">
+    <div class="title-bar-text">create blog post</div>
+    <div class="title-bar-controls">
+      <button aria-label="Minimize"></button>
+      <button aria-label="Maximize"></button>
+      <button aria-label="Close"></button>
+    </div>
+  </div>
+  <div class="window-body has-space">
+    <!-- <form id="create-post-form" method="post" action="/create-post"> -->
+    <!--   <label for="title">Title:</label> -->
+    <!--   <input type="text" name="title" id="title" required> -->
+  
+    <!--   <label for="content">Content:</label> -->
+    <!--   <textarea name="content" id="content" required></textarea> -->
+  
+    <!--   <button type="submit">Create Post</button> -->
+      <!-- </form> -->
+    <form id="create-post-form" method="post" action="/create-post">
+      <div>
+	<label for="title">Title:</label>
+	<input type="text" name="title" id="title" required>
+      </div>
+      
+      <div>
+	<label for="content">Content:</label>
+	<textarea name="content" id="content" rows="10" cols="50" required></textarea>
+      </div>
+      
+      <button type="submit">Create Post</button>
+    </form>
+
+  </div>
+</div>
+<script src="/js/form-handler.js"></script>
+{% endblock %}

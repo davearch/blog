@@ -10,7 +10,8 @@
                 :add-template-directory
                 :compile-template*
                 :render-template*
-                :*djula-execute-package*)
+                :*djula-execute-package*
+		:def-filter)
   (:import-from :datafly
                 :encode-json)
   (:export :render
@@ -30,10 +31,21 @@
            template nil
            env)))
 
+;; (def-filter :format-datetime (datetime-string &optional (format-string "%Y-%m-%d %H-:%M:%S"))
+;;   (let ((dt (local-time:parse-timestring datetime-string)))
+;;     (local-time:format-timestring nil dt format-string)))
+
+;;; probably a better way to do this but i'm a n00b
+(def-filter :format-date (created-at-string)
+  (format-blog-date created-at-string))
+
+(defun format-blog-date (date-string)
+  (let ((date-components (split-sequence:split-sequence #\Space date-string)))
+    (first date-components)))
+
 (defun render-json (object)
   (setf (getf (response-headers *response*) :content-type) "application/json")
   (encode-json object))
-
 
 ;;
 ;; Execute package definition

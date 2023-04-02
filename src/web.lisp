@@ -25,16 +25,23 @@
 (defroute "/" ()
   (let ((posts (get-all-blog-posts)))
     (render #P"index.html"
-	    '(:posts (posts)))))
+	    (list :posts posts))))
+
+(defroute ("/create-post" :method :post) (&key _parsed)
+  (create-blog-post (cdr (assoc "title" _parsed :test #'string=))
+		    (cdr (assoc "content" _parsed :test #'string=)))
+  (redirect "/"))
+
+
+(defroute "/create-post-form" ()
+  (render #P"create-post.html"))
 
 (defroute "/about" ()
   (render #P"about.html"))
 
-(defroute "/blog" ()
-  (render #P"blog.html"))
-
-(defroute "/blog/:id" (id)
-  (render #P"blog.html" :id id))
+(defroute "/blog/:id" (&key id)
+  (let ((post (get-blog-post id)))
+    (render #P"blog.html" (list :post post))))
 
 (defroute "/contact" ()
   (render #P"contact.html"))

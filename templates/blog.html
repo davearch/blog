@@ -4,13 +4,18 @@
 {% block title %}My Blog - {{ post.title }}{% endblock %}
 
 {% block content %}
-<div class="window">
-  <div class="title-bar">
+<div class="window active" style="min-width: 300px">
+  <div class="title-bar window-header">
     <div class="title-bar-text">{{ post.title }}</div>
+    <div class="title-bar-controls">
+      <button aria-label="Minimize"></button>
+      <button aria-label="Maximize"></button>
+      <button aria-label="Close"></button>
+    </div>
   </div>
-  <div class="window-body">
+  <div class="window-body has-space">
     <h2>{{ post.title }}</h2>
-    <p class="date">{{ post.date|date:"%Y-%m-%d" }}</p>
+    <p class="date">{{ post.created-at | format-date }}</p>
     <div class="post-content">
       {{ post.content|safe }}
     </div>

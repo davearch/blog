@@ -8,6 +8,7 @@
                "envy"
                "cl-ppcre"
                "uiop"
+	       "uuid"
 
                ;; for @route annotation
                "cl-syntax-annot"
