@@ -25,16 +25,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const title = document.getElementById('title').value;
     const content = document.getElementById('content').value;
+      const postId = document.getElementById('id') ? document.getElementById('id').value : null;
     
     // Validate title and content here if needed
     
-      const formData = new FormData(form);
-      const mydata = {
-	  title: title,
-	  content: content,
-      }
-      console.log(mydata);
-    fetch('/create-post', {
+    const formData = new FormData(form);
+    
+      const postUrl = postId ? '/update-post' : '/create-post';
+
+    fetch(postUrl, {
       method: 'POST',
       body: formData
     })

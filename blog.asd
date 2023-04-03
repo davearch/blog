@@ -1,3 +1,5 @@
+(ql:quickload :3bmd :local-nicknames '((:3bmd . "./3bmd")))
+
 (defsystem "blog"
   :version "0.1.0"
   :author "<darchuletajr@gmail.com>"
@@ -9,6 +11,9 @@
                "cl-ppcre"
                "uiop"
 	       "uuid"
+
+	       ;; markdown parser
+	       "3bmd"
 
                ;; for @route annotation
                "cl-syntax-annot"

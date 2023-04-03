@@ -4,7 +4,7 @@
 
 <div class="window active" style="min-width: 300px">
   <div class="title-bar window-header">
-    <div class="title-bar-text">create blog post</div>
+    <div class="title-bar-text">edit blog post : {{ post.title }}</div>
     <div class="title-bar-controls">
       <button aria-label="Minimize"></button>
       <button aria-label="Maximize"></button>
@@ -12,18 +12,19 @@
     </div>
   </div>
   <div class="window-body has-space">
-    <form id="create-post-form" method="post" action="/create-post">
+    <form id="create-post-form" method="post" action="/update-post">
+      <input id="id" type="hidden" name="id" value="{{ post.id }}" required>
       <div>
 	<label for="title">Title:</label>
-	<input type="text" name="title" id="title" required>
+	<input type="text" name="title" id="title" value="{{ post.title }}" required>
       </div>
       
       <div>
 	<label for="content">Content:</label>
-	<textarea name="content" id="content" rows="10" cols="50" required></textarea>
+	<textarea name="content" id="content" rows="10" cols="50" required>{{ post.content }}</textarea>
       </div>
       
-      <button type="submit">Create Post</button>
+      <button type="submit">Edit Post</button>
     </form>
 
   </div>

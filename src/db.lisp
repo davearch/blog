@@ -14,12 +14,18 @@
   (:import-from :sxql
                 :from
 		:select)
+  (:import-from :djula
+		:def-filter)
   (:export :connection-settings
            :db
            :with-connection
            :get-all-blog-posts
            :get-blog-post
-           :create-blog-post))
+           :create-blog-post
+	   :get-blog-post-by-url
+           :is-uuid-p
+	   :update-blog-post))
+   
 (in-package :blog.db)
 
 (defun connection-settings (&optional (db :maindb))
@@ -39,40 +45,56 @@
    (created-at :type timestamp :initform (local-time:now) :reader created-at)
    (url :type string :initform (generate-url-from-title (title self)) :reader url)))
 
+(defun create-table-if-not-exists ()
+  (sxql:create-table (:blog-post :if-not-exists t)
+      ((id :type 'string
+	   :primary-key t)
+       (title :type 'string
+	      :not-null t
+	      :unique t)
+       (content :type 'text
+		:not-null t)
+       (created-at :type 'timestamp
+		   :not-null t)
+       (url :type 'string
+	    :not-null t))))
+
 (defun create-blog-post (title content)
   (with-connection (db)
     (execute
-     (sxql:create-table (:blog-post :if-not-exists t)
-	 ((id :type 'string
-	      :primary-key t)
-	  (title :type 'string
-		 :not-null t)
-	  (content :type 'text
-		   :not-null t)
-	  (created-at :type 'timestamp
-		      :not-null t)
-	  (url :type 'string
-	       :not-null t))))
+     (create-table-if-not-exists))
     (if (title-unique-p title)
 	(progn
 	  (let ((id (generate-uuid))
-		 (created-at (local-time:now))
-		 (url (generate-url-from-title title)))
+		(created-at (local-time:now))
+		(url (generate-url-from-title title)))
 	    (execute
 	     (sxql:insert-into :blog-post
-				(sxql:set= :id id
-					   :title title
-					   :content content
-					   :created-at created-at
-					   :url url)))))
+	       (sxql:set= :id id
+			  :title title
+			  :content content
+			  :created-at created-at
+			  :url url)))))
 	(error "dat title already exists yo!! make it unique playa."))))
+
+(defun update-blog-post (id title content)
+  (with-connection (db)
+    (let ((post (get-blog-post id)))
+      (when post
+	(let ((url (generate-url-from-title title)))
+	  (execute
+	   (sxql:update :blog-post
+			(sxql:set= :title title
+			      :content content
+			      :url url)
+			(sxql:where (:= :id id)))))))))
 
 (defun get-all-blog-posts ()
   (with-connection (db)
     (handler-case
 	(retrieve-all
 	 (select :*
-	   (from :blog-post)))
+		 (from :blog-post)))
       (dbi-programming-error (e)
 	(list)))))
 
@@ -86,9 +108,12 @@
 (defun string-join (strings separator)
   (reduce (lambda (a b) (concatenate 'string a separator b)) strings))
 
-(defun title-unique-p (title)
+(defun title-unique-p (title &optional id)
   (let ((blog-posts (get-all-blog-posts)))
     (not (find title blog-posts :key #'get-blog-post-title :test #'string=))))
+
+(defun get-blog-post-id (blog-post)
+  (getf blog-post :id))
 
 (defun get-blog-post-title (blog-post)
   (getf blog-post :title))
@@ -99,3 +124,19 @@
      (select :*
        (from :blog-post)
        (sxql:where (:= :id id))))))
+
+(defun get-blog-post-by-url (url)
+  (let ((blog-posts (get-all-blog-posts)))
+    (find url blog-posts :key #'get-blog-post-url :test #'string=)))
+
+(defun get-blog-post-url (blog-post)
+  (getf blog-post :url))
+
+(defun is-uuid-p (uuid-string)
+  (let ((uuid-regex "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"))
+    (cl-ppcre:scan uuid-regex uuid-string)))
+
+(def-filter :markdown->html (markdown)
+  (with-output-to-string (s)
+    (3bmd:parse-string-and-print-to-stream markdown s)))
+

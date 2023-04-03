@@ -6,7 +6,7 @@
 {% block content %}
 <div class="window active" style="min-width: 300px">
   <div class="title-bar window-header">
-    <div class="title-bar-text">{{ post.title }}</div>
+    <div class="title-bar-text">My blog - {{ post.title }}</div>
     <div class="title-bar-controls">
       <button aria-label="Minimize"></button>
       <button aria-label="Maximize"></button>
@@ -14,12 +14,12 @@
     </div>
   </div>
   <div class="window-body has-space">
+    <span><a href="/">go back</a></span>
     <h2>{{ post.title }}</h2>
     <p class="date">{{ post.created-at | format-date }}</p>
     <div class="post-content">
-      {{ post.content|safe }}
+      {{ post.content | markdown->html | safe }}
     </div>
   </div>
 </div>
 {% endblock %}
-
