@@ -31,5 +31,5 @@
                  (:file "view" :depends-on ("config"))
                  (:file "db" :depends-on ("config"))
                  (:file "config"))))
-  :description ""
+  :description "personal blog"
   :in-order-to ((test-op (test-op "blog-test"))))
