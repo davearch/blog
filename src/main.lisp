@@ -22,7 +22,7 @@
         :report "Restart the server"
         (stop))))
   (setf *handler*
-        (apply #'clackup *appfile-path* args)))
+        (apply #'clackup *appfile-path* :address "0.0.0.0" args)))
 
 (defun stop ()
   (prog1
