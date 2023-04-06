@@ -237,7 +237,7 @@ body {
     height: 300px;
 }
 
-.window-body {
-    padding: 1rem;
+.window-body.has-space {
+    padding-bottom: 2rem;
     overflow-y: auto;
 }
