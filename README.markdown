@@ -26,6 +26,14 @@ then start a repl and load the project
 now you can start the server
 (blog:start :port 8080)
 
+# blog service
+the blog runs as a systemctl service on the server.
+You should put the service file in the etc dir for systemd:
+```
+/etc/systemd/system/blog.service
+```
+
+
 ## Todo
 add a model/migrations script ala Django
 

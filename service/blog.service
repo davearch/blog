@@ -1,0 +1,16 @@
+[Unit]
+Description=Blog App
+
+[Service]
+WorkingDirectory=/var/www/html
+ExecStart=/usr/bin/sbcl --disable-debugger --eval "(ql:quickload :blog)" --eval "(blog:start :port 80)" --eval "(sleep most-positive-fixnum)"
+Type=simple
+Restart=always
+RestartSec=10
+Environment="production"
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=basic.target
+
