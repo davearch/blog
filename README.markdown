@@ -18,15 +18,15 @@ now you can start the server
 
 ## update instructions
 
-git pull if you have to
+* git pull if you have to
 
-tar up the repo
+* tar up the repo
 
-scp tar file to server
+* scp tar file to server
 
-un-tar on server and replace /var/www/html dir with tar files
+* un-tar on server and replace /var/www/html dir with tar files
 
-systemcl restart blog.service
+* systemcl restart blog.service
 
 (or just run the script './scripts/beam.sh')
 
