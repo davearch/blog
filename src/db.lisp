@@ -137,6 +137,6 @@
     (cl-ppcre:scan uuid-regex uuid-string)))
 
 (def-filter :markdown->html (markdown)
-  (with-output-to-string (s)
-    (3bmd:parse-string-and-print-to-stream markdown s)))
-
+  (let ((3bmd-code-blocks:*code-blocks* t))
+    (with-output-to-string (s)
+      (3bmd:parse-string-and-print-to-stream markdown s))))

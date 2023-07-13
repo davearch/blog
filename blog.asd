@@ -14,6 +14,7 @@
 
 	       ;; markdown parser
 	       "3bmd"
+	       "3bmd-ext-code-blocks"
 
                ;; for @route annotation
                "cl-syntax-annot"

@@ -241,3 +241,7 @@ body {
     padding-bottom: 2rem;
     overflow-y: auto;
 }
+
+.post-content img {
+    max-width: 600px;
+}

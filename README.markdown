@@ -1,5 +1,10 @@
 # blog
 
+git pull if you have to
+tar up the repo
+scp to server
+un-tar on server and replace /var/www/html dir with tar files
+restart service
 
 
 ## Usage
