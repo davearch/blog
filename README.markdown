@@ -1,10 +1,14 @@
 # blog
 
 git pull if you have to
+
 tar up the repo
-scp to server
+
+scp tar file to server
+
 un-tar on server and replace /var/www/html dir with tar files
-restart service
+
+systemcl restart blog.service
 
 
 ## Usage
