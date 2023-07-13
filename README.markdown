@@ -1,16 +1,5 @@
 # blog
 
-git pull if you have to
-
-tar up the repo
-
-scp tar file to server
-
-un-tar on server and replace /var/www/html dir with tar files
-
-systemcl restart blog.service
-
-
 ## Usage
 bLoG
 
@@ -26,6 +15,21 @@ then start a repl and load the project
 now you can start the server
 (blog:start :port 8080)
 
+
+## update instructions
+
+git pull if you have to
+
+tar up the repo
+
+scp tar file to server
+
+un-tar on server and replace /var/www/html dir with tar files
+
+systemcl restart blog.service
+
+(or just run the script './scripts/beam.sh')
+
 # blog service
 the blog runs as a systemctl service on the server.
 You should put the service file in the etc dir for systemd:
@@ -36,6 +40,7 @@ You should put the service file in the etc dir for systemd:
 
 ## Todo
 add a model/migrations script ala Django
+clean up the css styles
 
 ## Author
 
