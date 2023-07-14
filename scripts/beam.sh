@@ -29,7 +29,13 @@ ssh $SERVER_USERNAME@$SERVER_ADDRESS << 'ENDSSH'
   mkdir -p /tmp/repo
   tar -xzvf /tmp/repo.tar.gz -C /tmp/repo
   
-  # Backup the current html dir (optional but recommended)
+  # Backup the current html dir
+  # but first check if there already is a backup - delete it
+  if [ -d "/var/www/html.bak" ]; then
+    rm -rf "/var/www/html.bak"
+    echo "html.bak has been deleted."
+  else
+    echo "no backup directory found - continuing..."
   mv /var/www/html /var/www/html.bak
   
   # Move the new files into /var/www/html
