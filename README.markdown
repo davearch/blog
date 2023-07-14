@@ -28,7 +28,18 @@ now you can start the server
 
 * systemcl restart blog.service
 
-(or just run the script './scripts/beam.sh')
+
+Alternatively you can just run the update script:
+* copy .env.local
+```bash
+cp .env.local .env
+```
+* update .env with the appropriate environment variables
+* make sure the script is executable and then run it.
+```bash
+chmod u+x ./scripts/beam.sh
+./scripts/beam.sh
+```
 
 # blog service
 the blog runs as a systemctl service on the server.
@@ -40,7 +51,7 @@ You should put the service file in the etc dir for systemd:
 
 ## Todo
 * add a model/migrations script ala Django
-* clean up the css styles
+* clean up the css styles (especially for mobile)
 * add RSS feed
 
 ## Author
