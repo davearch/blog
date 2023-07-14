@@ -41,6 +41,7 @@ You should put the service file in the etc dir for systemd:
 ## Todo
 add a model/migrations script ala Django
 clean up the css styles
+add RSS feed
 
 ## Author
 
